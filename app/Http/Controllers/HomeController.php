@@ -2,43 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\HomeRequest;
+use Illuminate\Support\Facades\Hash;
+
 class HomeController extends Controller
 {
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * Show user create form
      */
     public function create(): View
     {
         return view('createUser');
     }
-          
+
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * Store user data with server-side validation
      */
-    public function store(Request $request): RedirectResponse
+    public function store(HomeRequest $request): RedirectResponse
     {
-        $validatedData = $request->validate([
-                'name' => 'required',
-                'password' => 'required|min:5',
-                'email' => 'required|email|unique:users'
-            ], [
-                'name.required' => 'Name field is required.',
-                'password.required' => 'Password field is required.',
-                'email.required' => 'Email field is required.',
-                'email.email' => 'Email field must be email address.'
-            ]);
-        
-        $validatedData['password'] = bcrypt($validatedData['password']);
-        $user = User::create($validatedData);
-              
+        // ✅ Validation already done by HomeRequest
+        $validatedData = $request->validated();
+
+        // ✅ Password hashing
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        // ✅ Store data
+        User::create($validatedData);
+
         return back()->with('success', 'User created successfully.');
     }
 }
