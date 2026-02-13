@@ -13,7 +13,7 @@
     <div class="container">
 
         <div class="card mt-5">
-            <h3 class="card-header p-3"><i class="fa fa-star"></i> Laravel 12 Form Validation Example - ItSolutionStuff.com</h3>
+            <h3 class="card-header p-3"><i class="fa fa-star"></i> Laravel 12 Form Validation </h3>
             <div class="card-body">
                 @session('success')
                 <div class="alert alert-success" role="alert">
