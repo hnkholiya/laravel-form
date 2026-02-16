@@ -48,15 +48,15 @@
                             placeholder="Name">
 
                         <!-- Way 2: Display Error Message -->
-                        @error('name')
+                        <!-- @error('name')
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Holy guacamole!</strong> {{ $message }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                        </div> -->
 
 
                         <!-- <span class="text-danger">{{ $message }}</span> -->
-                        @enderror
+                        <!-- @enderror -->
                     </div>
 
                     <div class="mb-3">
@@ -68,14 +68,14 @@
                             class="form-control @error('password') is-invalid @enderror"
                             placeholder="Password">
 
-                        <!-- Way 3: Display Error Message -->
+                        <!-- Way 3: Display Error Message
                         @if ($errors->has('password'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Holy guacamole!</strong> {{ $errors->first('password') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                        <!-- <span class="text-danger">{{ $errors->first('password') }}</span> -->
-                        @endif
+                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif -->
                     </div>
 
                     <div class="mb-3">
@@ -87,9 +87,9 @@
                             class="form-control @error('email') is-invalid @enderror"
                             placeholder="Email">
 
-                        @error('email')
+                        <!-- @error('email')
                         <span class="text-danger">{{ $message }}</span>
-                        @endif
+                        @endif -->
                     </div>
 
                     <div class="mb-3">
