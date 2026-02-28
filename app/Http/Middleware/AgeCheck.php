@@ -15,6 +15,12 @@ class AgeCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
+        
+        //  if($request->age<18){
+        //     die("you cannot access this page");
+        // }
         return $next($request);
+       
     }
 }
